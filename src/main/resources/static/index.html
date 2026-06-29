@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Simulator</title>
+    <link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>Banking Simulator</h1>
+            <p>Select a customer to view their dashboard</p>
+        </div>
+
+        <div class="field">
+            <label for="customer-select">Customer</label>
+            <select id="customer-select">
+                <option value="">— select a customer —</option>
+                <option value="C001">John Smith — #C001</option>
+                <option value="C002">Jane Doe — #C002</option>
+            </select>
+        </div>
+
+        <button class="btn-primary" onclick="viewDashboard()">
+            View Dashboard →
+        </button>
+    </div>
+
+    <script>
+        function viewDashboard() {
+            const select = document.getElementById('customer-select');
+            if (!select.value) {
+                select.focus();
+                return;
+            }
+            window.location.href = `/dashboard?customer=${select.value}`;
+        }
+    </script>
+</body>
+</html>
