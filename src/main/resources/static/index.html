@@ -14,11 +14,8 @@
         </div>
 
         <div class="field">
-            <label for="customer-select">Customer</label>
+            <label for="customer-select">Choose a Customer</label>
             <select id="customer-select">
-                <option value="">— select a customer —</option>
-                <option value="C001">John Smith — #C001</option>
-                <option value="C002">Jane Doe — #C002</option>
             </select>
         </div>
 
@@ -27,15 +24,7 @@
         </button>
     </div>
 
-    <script>
-        function viewDashboard() {
-            const select = document.getElementById('customer-select');
-            if (!select.value) {
-                select.focus();
-                return;
-            }
-            window.location.href = `/dashboard?customer=${select.value}`;
-        }
-    </script>
+    <script src="js/api.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Banking Simulator</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a href="/" class="back">← All Customers</a>
+            <span class="brand">BankDB</span>
+        </header>
+
+        <main class="dashboard">
+            <section class="customer-card">
+                <div class="customer-main">
+                    <div class="avatar" id="avatar"></div>
+                    <div class="customer-info">
+                        <h1 id="customer-name"></h1>
+                        <p id="customer-email"></p>
+                    </div>
+                </div>
+                <div class="customer-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Date of Birth</span>
+                        <span class="meta-value" id="customer-dob"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Member Since</span>
+                        <span class="meta-value" id="customer-since"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Phone</span>
+                        <span class="meta-value" id="customer-phone"></span>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h2 class="section-title">Accounts</h2>
+                <div class="accounts-grid" id="accounts-grid"></div>
+            </section>
+            <div class="bottom-grid">
+                <section class="section">
+                    <h2 class="section-title">Active Loans</h2>
+                    <div class="loans-list" id="loans-list"></div>
+                </section>
+                <section class="section">
+                    <h2 class="section-title">Alerts & Credit</h2>
+                    <div id="fraud-alert"></div>
+                    <div id="credit-block"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js?v=2"></script>
+    <script src="js/dashboard.js?v=2"></script>
+</body>
+</html>

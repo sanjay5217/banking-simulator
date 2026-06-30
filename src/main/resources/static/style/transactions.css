@@ -1,0 +1,186 @@
+.txn-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.txn-filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #A85527;
+}
+
+.merchant-search {
+    padding: 9px 14px;
+    background-color: #ffffff;
+    color: #000004;
+    border: 1px solid #E4A030;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    outline: none;
+    min-width: 220px;
+}
+
+.merchant-search:focus {
+    border-color: #1D402D;
+}
+
+.merchant-search::placeholder {
+    color: #A85527;
+    opacity: 0.6;
+}
+
+.txn-title {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.txn-account-type {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1D402D;
+}
+
+.txn-account-id {
+    font-size: 13px;
+    color: #A85527;
+}
+
+.month-picker {
+    padding: 9px 14px;
+    background-color: #ffffff;
+    color: #000004;
+    border: 1px solid #E4A030;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A85527' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+    outline: none;
+}
+
+.month-picker:focus {
+    border-color: #1D402D;
+}
+
+.txn-table-wrap {
+    background: #ffffff;
+    border: 1px solid #E4A030;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.txn-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.txn-table thead tr {
+    background: #1D402D;
+}
+
+.txn-table thead th {
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #FFF9EC;
+}
+
+.txn-table thead th.num {
+    text-align: right;
+}
+
+.txn-table tbody tr {
+    border-bottom: 1px solid #FFF9EC;
+    transition: background 0.1s;
+}
+
+.txn-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.txn-table tbody tr:hover {
+    background: #fffdf5;
+}
+
+.txn-table tbody td {
+    padding: 13px 20px;
+    color: #000004;
+}
+
+.txn-table tbody td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.txn-table tbody td.amount-positive {
+    color: #1D402D;
+    font-weight: 600;
+    text-align: right;
+}
+
+.txn-table tbody td.amount-negative {
+    color: #A85527;
+    font-weight: 500;
+    text-align: right;
+}
+
+.txn-table .empty-row td {
+    text-align: center;
+    color: #A85527;
+    padding: 32px;
+    font-size: 13px;
+}
+
+.txn-summary {
+    background: #1D402D;
+    border: 1px solid #1D402D;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.summary-in {
+    color: #A8D5B5;
+}
+
+.summary-divider {
+    color: #FFF9EC;
+    opacity: 0.4;
+}
+
+.summary-out {
+    color: #E4A030;
+}

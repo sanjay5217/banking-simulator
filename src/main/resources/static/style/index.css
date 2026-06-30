@@ -5,8 +5,8 @@
 }
 
 body {
-    background-color: #0D0D0D;
-    color: #FFFFFF;
+    background-color: #FFF9EC;
+    color: #000004;
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
@@ -15,8 +15,8 @@ body {
 }
 
 .card {
-    background-color: #3C3D40;
-    border: 1px solid #8C8265;
+    background-color: #ffffff;
+    border: 1px solid #E4A030;
     border-radius: 12px;
     padding: 48px 40px;
     width: 420px;
@@ -29,13 +29,13 @@ body {
     font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.3px;
-    color: #FFFFFF;
+    color: #1D402D;
 }
 
 .card-header p {
     margin-top: 8px;
     font-size: 14px;
-    color: #BFB28A;
+    color: #A85527;
 }
 
 .field label {
@@ -44,20 +44,20 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: #8C8265;
+    color: #A85527;
     margin-bottom: 8px;
 }
 
 .field select {
     width: 100%;
     padding: 12px 14px;
-    background-color: #0D0D0D;
-    color: #FFFFFF;
-    border: 1px solid #8C8265;
+    background-color: #FFF9EC;
+    color: #000004;
+    border: 1px solid #E4A030;
     border-radius: 8px;
     font-size: 14px;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238C8265' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A85527' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 14px center;
     cursor: pointer;
@@ -66,18 +66,18 @@ body {
 }
 
 .field select:focus {
-    border-color: #BFB28A;
+    border-color: #1D402D;
 }
 
 .field select option {
-    background-color: #3C3D40;
+    background-color: #FFF9EC;
 }
 
 .btn-primary {
     width: 100%;
     padding: 13px;
-    background-color: #BFB28A;
-    color: #0D0D0D;
+    background-color: #1D402D;
+    color: #FFF9EC;
     border: none;
     border-radius: 8px;
     font-size: 14px;
@@ -88,7 +88,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #8C8265;
+    background-color: #A85527;
 }
 
 .btn-primary:active {

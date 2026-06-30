@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions — BankDB</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/transactions.css">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a href="javascript:history.back()" class="back">← Back</a>
+            <span class="brand">BankDB</span>
+        </header>
+
+        <main>
+            <div class="txn-header">
+                <div class="txn-title">
+                    <span class="txn-account-type" id="account-type">Chequing</span>
+                    <span class="txn-account-id" id="account-id">#A001</span>
+                </div>
+            </div>
+
+            <section class="txn-filters">
+                <div class="filter-group">
+                    <label for="month-picker" class="filter-label">Month</label>
+                    <select class="month-picker" id="month-picker">
+                        <option value="">All Months</option>
+                        <option value="2025-05">May 2025</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="merchant-search" class="filter-label">Merchant</label>
+                    <input type="text" class="merchant-search" id="merchant-search" placeholder="Search merchant...">
+                </div>
+            </section>
+
+            <div class="txn-table-wrap">
+                <table class="txn-table">
+                    <thead>
+                        <tr>
+                            <th id="tdate">Date</th>
+                            <th id="tdescription">Description</th>
+                            <th class="num" id="tamount" >Amount</th>
+                            <th class="num" id="tbalance" >Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="txn-body">
+                        <tr class="empty-row">
+                            <td colspan="4">No transactions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="txn-summary" id="txn-summary">
+                <span class="summary-in" id="summary-in">+$0.00 in</span>
+                <span class="summary-divider">/</span>
+                <span class="summary-out" id="summary-out">-$0.00 out</span>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js?v=2"></script>
+    <script src="js/transactions.js?v=2"></script>
+</body>
+</html>
