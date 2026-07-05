@@ -5,6 +5,16 @@
     margin-bottom: 16px;
 }
 
+.txn-account-type {
+    font-size: 26px;
+}
+
+.txn-balance {
+    font-size: 22px;
+    font-weight: 700;
+    color: #14213D;
+}
+
 .txn-filters {
     display: flex;
     align-items: flex-end;
@@ -23,14 +33,14 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.6px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .merchant-search {
     padding: 9px 14px;
     background-color: #ffffff;
-    color: #000004;
-    border: 1px solid #E4A030;
+    color: #14213D;
+    border: 1px solid #C9A227;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 500;
@@ -39,11 +49,11 @@
 }
 
 .merchant-search:focus {
-    border-color: #1D402D;
+    border-color: #0B2E59;
 }
 
 .merchant-search::placeholder {
-    color: #A85527;
+    color: #3B6EA5;
     opacity: 0.6;
 }
 
@@ -56,19 +66,19 @@
 .txn-account-type {
     font-size: 20px;
     font-weight: 700;
-    color: #1D402D;
+    color: #0B2E59;
 }
 
 .txn-account-id {
     font-size: 13px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .month-picker {
     padding: 9px 14px;
     background-color: #ffffff;
-    color: #000004;
-    border: 1px solid #E4A030;
+    color: #14213D;
+    border: 1px solid #C9A227;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 500;
@@ -82,12 +92,12 @@
 }
 
 .month-picker:focus {
-    border-color: #1D402D;
+    border-color: #0B2E59;
 }
 
 .txn-table-wrap {
     background: #ffffff;
-    border: 1px solid #E4A030;
+    border: 1px solid #C9A227;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 0;
@@ -100,7 +110,7 @@
 }
 
 .txn-table thead tr {
-    background: #1D402D;
+    background: #0B2E59;
 }
 
 .txn-table thead th {
@@ -110,7 +120,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: #FFF9EC;
+    color: #F4F6F9;
 }
 
 .txn-table thead th.num {
@@ -118,7 +128,7 @@
 }
 
 .txn-table tbody tr {
-    border-bottom: 1px solid #FFF9EC;
+    border-bottom: 1px solid #F4F6F9;
     transition: background 0.1s;
 }
 
@@ -127,12 +137,12 @@
 }
 
 .txn-table tbody tr:hover {
-    background: #fffdf5;
+    background: #F7FAFD;
 }
 
 .txn-table tbody td {
     padding: 13px 20px;
-    color: #000004;
+    color: #14213D;
 }
 
 .txn-table tbody td.num {
@@ -141,27 +151,32 @@
 }
 
 .txn-table tbody td.amount-positive {
-    color: #1D402D;
+    color: #1E7A46;
     font-weight: 600;
     text-align: right;
 }
 
 .txn-table tbody td.amount-negative {
-    color: #A85527;
+    color: #B3261E;
     font-weight: 500;
     text-align: right;
 }
 
+.txn-table tbody td:nth-child(2).amount-positive,
+.txn-table tbody td:nth-child(2).amount-negative {
+    text-align: left;
+}
+
 .txn-table .empty-row td {
     text-align: center;
-    color: #A85527;
+    color: #3B6EA5;
     padding: 32px;
     font-size: 13px;
 }
 
 .txn-summary {
-    background: #1D402D;
-    border: 1px solid #1D402D;
+    background: #0B2E59;
+    border: 1px solid #0B2E59;
     border-top: none;
     border-radius: 0 0 12px 12px;
     padding: 12px 20px;
@@ -173,14 +188,14 @@
 }
 
 .summary-in {
-    color: #A8D5B5;
+    color: #8FE3AC;
 }
 
 .summary-divider {
-    color: #FFF9EC;
+    color: #F4F6F9;
     opacity: 0.4;
 }
 
 .summary-out {
-    color: #E4A030;
+    color: #C9A227;
 }

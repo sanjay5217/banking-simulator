@@ -29,7 +29,7 @@ function render() {
             const positive = t.amount >= 0;
             tr.innerHTML = `
                 <td>${t.date}</td>
-                <td>${t.description}</td>
+                <td class="${t.description === 'Deposited' ? 'amount-positive' : t.description === 'Withdrawn' ? 'amount-negative' : t.description === 'Transfer' ? (t.amount < 0 ? 'amount-negative' : 'amount-positive') : ''}">${t.description}</td>
                 <td class="${positive ? 'amount-positive' : 'amount-negative'}">${positive ? '+' : ''}${t.amount.toFixed(2)}</td>
                 <td class="num">${t.balance.toFixed(2)}</td>
             `;
@@ -46,6 +46,16 @@ function render() {
 searchInput.addEventListener('input', render);
 monthPicker.addEventListener('change', render);
 
+function renderActionNav(account) {
+    const isChequing = account.type === 'chequing';
+    document.getElementById('txn-action-nav').innerHTML = `
+        <a href="/deposit.html?account=${accountId}" class="btn-action">+ Deposit</a>
+        ${isChequing ? `<a href="/withdraw.html?account=${accountId}" class="btn-action btn-action-secondary">− Withdraw</a>` : ''}
+        <a href="/transfer.html?account=${accountId}" class="btn-action btn-action-secondary">Transfer →</a>
+        <a href="/summary.html?account=${accountId}" class="btn-action btn-action-secondary">Summary</a>
+    `;
+}
+
 async function load() {
     if (!accountId) {
         txnBody.innerHTML = '<tr class="empty-row"><td colspan="4">No account specified</td></tr>';
@@ -59,12 +69,16 @@ async function load() {
         document.getElementById('account-type').textContent =
             account.type.charAt(0).toUpperCase() + account.type.slice(1);
         document.getElementById('account-id').textContent = `#A${String(account.id).padStart(3, '0')}`;
+        document.getElementById('account-balance').textContent =
+            '$' + Number(account.balance).toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        document.getElementById('back-btn').href = `/dashboard.html?customer=${account.customerId}`;
 
-        const sorted = [...transactions].sort((a, b) => new Date(a.date) - new Date(b.date));
-        const totalAmount = sorted.reduce((sum, t) => sum + t.amount, 0);
+        renderActionNav(account);
+        const chronological = [...transactions].sort((a, b) => a.id - b.id);
+        const totalAmount = chronological.reduce((sum, t) => sum + t.amount, 0);
         let runningBalance = account.balance - totalAmount;
 
-        allTransactions = sorted.map(t => {
+        const withBalances = chronological.map(t => {
             runningBalance += t.amount;
             return {
                 date: t.date,
@@ -73,6 +87,8 @@ async function load() {
                 balance: runningBalance
             };
         });
+
+        allTransactions = withBalances.reverse();
         render();
     } catch (e) {
         console.error('Failed to load transactions', e);

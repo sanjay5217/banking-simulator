@@ -5,8 +5,8 @@
 }
 
 body {
-    background-color: #FFF9EC;
-    color: #000004;
+    background-color: #F4F6F9;
+    color: #14213D;
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
 }
@@ -23,19 +23,19 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
-    border-bottom: 1px solid #E4A030;
+    border-bottom: 1px solid #C9A227;
     margin-bottom: 32px;
 }
 
 .back {
     font-size: 13px;
-    color: #A85527;
+    color: #3B6EA5;
     text-decoration: none;
     font-weight: 500;
 }
 
 .back:hover {
-    color: #1D402D;
+    color: #0B2E59;
 }
 
 .brand {
@@ -43,13 +43,13 @@ body {
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: #1D402D;
+    color: #0B2E59;
 }
 
 /* Customer Card */
 .customer-card {
     background: #ffffff;
-    border: 1px solid #E4A030;
+    border: 1px solid #C9A227;
     border-radius: 12px;
     padding: 28px 32px;
     display: flex;
@@ -69,8 +69,8 @@ body {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: #1D402D;
-    color: #FFF9EC;
+    background-color: #0B2E59;
+    color: #F4F6F9;
     font-size: 16px;
     font-weight: 700;
     display: flex;
@@ -82,12 +82,12 @@ body {
 .customer-info h1 {
     font-size: 18px;
     font-weight: 600;
-    color: #000004;
+    color: #14213D;
 }
 
 .customer-info p {
     font-size: 13px;
-    color: #A85527;
+    color: #3B6EA5;
     margin-top: 3px;
 }
 
@@ -107,19 +107,19 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .meta-value {
     font-size: 13px;
-    color: #000004;
+    color: #14213D;
     font-weight: 500;
 }
 
 /* Sections */
 .section {
     background: #ffffff;
-    border: 1px solid #E4A030;
+    border: 1px solid #C9A227;
     border-radius: 12px;
     padding: 24px 28px;
 }
@@ -129,10 +129,10 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #1D402D;
+    color: #0B2E59;
     margin-bottom: 18px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #FFF9EC;
+    border-bottom: 1px solid #F4F6F9;
 }
 
 /* Accounts */
@@ -147,8 +147,8 @@ body {
 }
 
 .account-card {
-    background: #FFF9EC;
-    border: 1px solid #E4A030;
+    background: #F4F6F9;
+    border: 1px solid #C9A227;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -167,30 +167,87 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.6px;
-    color: #1D402D;
+    color: #0B2E59;
 }
 
 .account-id {
     font-size: 11px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .account-balance {
     font-size: 22px;
     font-weight: 700;
-    color: #000004;
+    color: #14213D;
 }
 
 .btn-view {
     font-size: 12px;
     font-weight: 600;
-    color: #A85527;
+    color: #3B6EA5;
     text-decoration: none;
     margin-top: 4px;
 }
 
 .btn-view:hover {
-    color: #1D402D;
+    color: #0B2E59;
+}
+
+.account-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.amount-input {
+    flex: 1 1 100%;
+    font-size: 12px;
+    font-family: inherit;
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: 1px solid #C9A227;
+    background: #ffffff;
+    color: #14213D;
+}
+
+.amount-input:focus {
+    outline: 1px solid #0B2E59;
+}
+
+.btn-deposit,
+.btn-withdraw {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 0;
+    border-radius: 6px;
+    border: 1px solid #C9A227;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-deposit {
+    background: #0B2E59;
+    color: #F4F6F9;
+}
+
+.btn-deposit:hover {
+    background: #082244;
+}
+
+.btn-withdraw {
+    background: #F4F6F9;
+    color: #3B6EA5;
+}
+
+.btn-withdraw:hover {
+    background: #EAF0F7;
+}
+
+.account-error {
+    font-size: 11px;
+    color: #B3261E;
+    min-height: 14px;
 }
 
 /* Bottom grid */
@@ -212,9 +269,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    background: #FFF9EC;
+    background: #F4F6F9;
     border-radius: 8px;
-    border: 1px solid #E4A030;
+    border: 1px solid #C9A227;
 }
 
 .loan-left {
@@ -226,12 +283,12 @@ body {
 .loan-type {
     font-size: 13px;
     font-weight: 600;
-    color: #000004;
+    color: #14213D;
 }
 
 .loan-id {
     font-size: 11px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .loan-right {
@@ -243,17 +300,17 @@ body {
 .loan-amount {
     font-size: 13px;
     font-weight: 600;
-    color: #000004;
+    color: #14213D;
 }
 
 .loan-rate {
     font-size: 12px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .loan-term {
     font-size: 12px;
-    color: #1D402D;
+    color: #0B2E59;
     font-weight: 600;
 }
 
@@ -264,7 +321,7 @@ body {
     gap: 10px;
     padding: 12px 16px;
     background: #fff3e0;
-    border: 1px solid #E4A030;
+    border: 1px solid #C9A227;
     border-radius: 8px;
     margin-bottom: 16px;
 }
@@ -276,25 +333,25 @@ body {
 .alert-text {
     font-size: 13px;
     font-weight: 600;
-    color: #A85527;
+    color: #3B6EA5;
     flex: 1;
 }
 
 .btn-view-sm {
     font-size: 12px;
     font-weight: 600;
-    color: #A85527;
+    color: #3B6EA5;
     text-decoration: none;
 }
 
 .btn-view-sm:hover {
-    color: #1D402D;
+    color: #0B2E59;
 }
 
 .credit-block {
     padding: 14px 16px;
-    background: #FFF9EC;
-    border: 1px solid #E4A030;
+    background: #F4F6F9;
+    border: 1px solid #C9A227;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -310,16 +367,16 @@ body {
 .credit-label {
     font-size: 13px;
     font-weight: 600;
-    color: #000004;
+    color: #14213D;
 }
 
 .credit-ratio {
     font-size: 12px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .credit-bar-track {
-    background: #E4A030;
+    background: #C9A227;
     border-radius: 99px;
     height: 6px;
     overflow: hidden;
@@ -327,7 +384,7 @@ body {
 }
 
 .credit-bar-fill {
-    background: #A85527;
+    background: #3B6EA5;
     height: 100%;
     border-radius: 99px;
     opacity: 1;
@@ -335,6 +392,198 @@ body {
 
 .credit-pct {
     font-size: 11px;
-    color: #A85527;
+    color: #3B6EA5;
     font-weight: 500;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 13px;
+    background-color: #0B2E59;
+    color: #F4F6F9;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-primary:hover {
+    background-color: #3B6EA5;
+}
+
+.btn-primary:active {
+    opacity: 0.85;
+}
+
+/* Transaction page action nav buttons */
+.txn-action-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-action {
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    background: #0B2E59;
+    color: #ffffff;
+    border: 1px solid #0B2E59;
+}
+
+.btn-action:hover {
+    background: #082244;
+    border-color: #082244;
+}
+
+.btn-action-secondary {
+    background: #ffffff;
+    color: #0B2E59;
+    border: 1px solid #C9A227;
+}
+
+.btn-action-secondary:hover {
+    background: #F4F6F9;
+}
+
+/* Form pages — deposit, withdraw, transfer */
+.form-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+    gap: 24px;
+}
+
+.form-card {
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+    padding: 32px 36px;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0B2E59;
+}
+
+.form-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0B2E59;
+}
+
+.form-section-desc {
+    font-size: 13px;
+    color: #3B6EA5;
+}
+
+.form-account-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #F4F6F9;
+    border-radius: 8px;
+}
+
+.acct-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0B2E59;
+}
+
+.acct-balance {
+    font-size: 15px;
+    font-weight: 700;
+    color: #14213D;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #3B6EA5;
+}
+
+.form-field input,
+.form-field select {
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 1px solid #C9A227;
+    border-radius: 8px;
+    color: #14213D;
+    background: #ffffff;
+    outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    border-color: #0B2E59;
+}
+
+.form-error {
+    font-size: 12px;
+    color: #B3261E;
+    min-height: 16px;
+}
+
+/* Transfer page two-column layout */
+.transfer-page {
+    align-items: stretch;
+}
+
+.transfer-header {
+    max-width: 940px;
+    width: 100%;
+    align-self: center;
+}
+
+.transfer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 940px;
+}
+
+.transfer-grid .form-card {
+    max-width: none;
 }

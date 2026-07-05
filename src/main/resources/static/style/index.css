@@ -5,8 +5,8 @@
 }
 
 body {
-    background-color: #FFF9EC;
-    color: #000004;
+    background-color: #F4F6F9;
+    color: #14213D;
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
@@ -16,7 +16,7 @@ body {
 
 .card {
     background-color: #ffffff;
-    border: 1px solid #E4A030;
+    border: 1px solid #C9A227;
     border-radius: 12px;
     padding: 48px 40px;
     width: 420px;
@@ -29,13 +29,13 @@ body {
     font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.3px;
-    color: #1D402D;
+    color: #0B2E59;
 }
 
 .card-header p {
     margin-top: 8px;
     font-size: 14px;
-    color: #A85527;
+    color: #3B6EA5;
 }
 
 .field label {
@@ -44,16 +44,16 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: #A85527;
+    color: #3B6EA5;
     margin-bottom: 8px;
 }
 
 .field select {
     width: 100%;
     padding: 12px 14px;
-    background-color: #FFF9EC;
-    color: #000004;
-    border: 1px solid #E4A030;
+    background-color: #F4F6F9;
+    color: #14213D;
+    border: 1px solid #C9A227;
     border-radius: 8px;
     font-size: 14px;
     appearance: none;
@@ -66,18 +66,18 @@ body {
 }
 
 .field select:focus {
-    border-color: #1D402D;
+    border-color: #0B2E59;
 }
 
 .field select option {
-    background-color: #FFF9EC;
+    background-color: #F4F6F9;
 }
 
 .btn-primary {
     width: 100%;
     padding: 13px;
-    background-color: #1D402D;
-    color: #FFF9EC;
+    background-color: #0B2E59;
+    color: #F4F6F9;
     border: none;
     border-radius: 8px;
     font-size: 14px;
@@ -88,7 +88,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #A85527;
+    background-color: #3B6EA5;
 }
 
 .btn-primary:active {

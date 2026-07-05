@@ -13,7 +13,8 @@ async function post(path, body) {
         body: JSON.stringify(body)
     });
     if (!res.ok) throw new Error(`POST ${path} failed: ${res.status}`);
-    return res.json();
+    const text = await res.text();
+    return text ? JSON.parse(text) : null;
 }
 
 const API = {
@@ -25,14 +26,20 @@ const API = {
 
     accounts: {
         getByCustomer: (customerId) => get(`/accounts/customer/${customerId}`),
-        getById: (id) => get(`/accounts/${id}`), 
-        // getByAccount: (customerId) => get(`/accounts/${customerId}/summary`), 
-        deposit: (id) => post(`/accounts/${id}/deposit`), 
-        withdraw: (id) => post(`/accounts/${id}/withdraw`)
+        getById: (id) => get(`/accounts/${id}`),
+        getSummary: (accountId) => get(`/accounts/${accountId}/summary`),
+        deposit: (id, amount) => post(`/accounts/${id}/deposit`, { amount }),
+        withdraw: (id, amount) => post(`/accounts/${id}/withdraw`, { amount }),
     },
 
     transactions: {
         getByAccountId: (accountId) => get(`/transaction/${accountId}`),
         getByQuery: (query) => get(`/transaction/search/${query}`),
+    },
+
+    transfers: {
+        internal: (body) => post(`/transfer/${body.toAccountId}`, body),
+        external: (toAccountId, body) => post(`/transfer/${toAccountId}`, body),
+        getHistory: (accountId) => get(`/transfer/summary/${accountId}`)
     }
 };
