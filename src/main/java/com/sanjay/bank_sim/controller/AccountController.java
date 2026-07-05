@@ -4,21 +4,24 @@ import com.sanjay.bank_sim.exception.AccountNotFoundException;
 import com.sanjay.bank_sim.exception.InsufficientFundsException;
 import com.sanjay.bank_sim.model.Account;
 import com.sanjay.bank_sim.service.AccountService;
+import com.sanjay.bank_sim.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
-
     private final AccountService accountService;
+    private final TransactionService transactionService;
 
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService, TransactionService transactionService) {
         this.accountService = accountService;
+        this.transactionService = transactionService;
     }
 
     @GetMapping("/customer/{customerId}")
@@ -35,18 +38,21 @@ public class AccountController {
         }
     }
 
-    @GetMapping("/customer/{customerId}/summary")
-    public ResponseEntity<?> getAccountSummary(@PathVariable int customerId) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    @PostMapping("/{accountId}/deposit")
+    public ResponseEntity<?> deposit(@PathVariable int accountId, @RequestBody Map<String, BigDecimal> body) {
+        this.accountService.deposit(accountId, body.get("amount"));
+        return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/{id}/deposit")
-    public ResponseEntity<?> deposit(@PathVariable int id, @RequestBody Map<String, BigDecimal> body) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    @PostMapping("/{accountId}/withdraw")
+    public ResponseEntity<?> withdraw(@PathVariable int accountId, @RequestBody Map<String, BigDecimal> body) {
+        this.accountService.withdraw(accountId, body.get("amount"));
+        return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/{id}/withdraw")
-    public ResponseEntity<?> withdraw(@PathVariable int id, @RequestBody Map<String, BigDecimal> body) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    @GetMapping("/{accountId}/summary")
+    public ResponseEntity<?> getAccountSummary(@PathVariable int accountId) {
+        HashMap<String, Object> transactionMap = this.transactionService.getTransactionSummary(accountId);
+        return ResponseEntity.ok(transactionMap);
     }
 }

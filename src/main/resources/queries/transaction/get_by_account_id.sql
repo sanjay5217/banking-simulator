@@ -1,2 +1,2 @@
 SELECT * FROM transaction
-WHERE accountid = ?;
+WHERE accountid = ?

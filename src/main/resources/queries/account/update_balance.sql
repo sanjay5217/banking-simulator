@@ -1,3 +1,3 @@
 UPDATE account 
-SET balance = ?
+SET balance = balance + ?
 WHERE accountid = ?;
