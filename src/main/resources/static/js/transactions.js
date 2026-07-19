@@ -49,10 +49,11 @@ monthPicker.addEventListener('change', render);
 function renderActionNav(account) {
     const isChequing = account.type === 'chequing';
     document.getElementById('txn-action-nav').innerHTML = `
-        <a href="/deposit.html?account=${accountId}" class="btn-action">+ Deposit</a>
-        ${isChequing ? `<a href="/withdraw.html?account=${accountId}" class="btn-action btn-action-secondary">− Withdraw</a>` : ''}
-        <a href="/transfer.html?account=${accountId}" class="btn-action btn-action-secondary">Transfer →</a>
-        <a href="/summary.html?account=${accountId}" class="btn-action btn-action-secondary">Summary</a>
+        <a href="/pages/deposit.html?account=${accountId}" class="btn-action">+ Deposit</a>
+        ${isChequing ? `<a href="/pages/withdraw.html?account=${accountId}" class="btn-action btn-action-secondary">− Withdraw</a>` : ''}
+        <a href="/pages/transfer.html?account=${accountId}" class="btn-action btn-action-secondary">Transfer →</a>
+        <a href="/pages/summary.html?account=${accountId}" class="btn-action btn-action-secondary">Summary</a>
+        <a href="/pages/analytics.html?account=${accountId}" class="btn-action btn-action-secondary">Analytics</a>
     `;
 }
 
@@ -71,7 +72,7 @@ async function load() {
         document.getElementById('account-id').textContent = `#A${String(account.id).padStart(3, '0')}`;
         document.getElementById('account-balance').textContent =
             '$' + Number(account.balance).toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        document.getElementById('back-btn').href = `/dashboard.html?customer=${account.customerId}`;
+        document.getElementById('back-btn').href = `/pages/dashboard.html?customer=${account.customerId}`;
 
         renderActionNav(account);
         const chronological = [...transactions].sort((a, b) => a.id - b.id);

@@ -10,7 +10,7 @@ CREATE TABLE customers (
 CREATE TABLE account (
 	accountid SERIAL PRIMARY KEY,
 	customerid INT NOT NULL REFERENCES customers(customerid),
-	type VARCHAR(20) NOT NULL CHECK (type IN ('chequing', 'savings')),
+	type VARCHAR(20) NOT NULL CHECK (type IN ('chequing', 'savings', 'tfsa', 'rrsp')),
     balance NUMERIC(12, 2) NOT NULL DEFAULT 0.00
 );
 
@@ -25,6 +25,19 @@ CREATE TABLE savings_account (
     accountid INT PRIMARY KEY REFERENCES account(accountid),
     interest_rate NUMERIC(6, 4) NOT NULL DEFAULT 0.00,
     min_balance NUMERIC(12, 2) NOT NULL DEFAULT 0.00
+);
+
+CREATE TABLE tfsa_account (
+    accountid INT PRIMARY KEY REFERENCES account(accountid),
+    contribution_room NUMERIC(12, 2) NOT NULL DEFAULT 0.00,
+    annual_limit NUMERIC(12, 2) NOT NULL DEFAULT 0.00
+);
+
+CREATE TABLE rrsp_account (
+    accountid INT PRIMARY KEY REFERENCES account(accountid),
+    contribution_room NUMERIC(12, 2) NOT NULL DEFAULT 0.00,
+    annual_limit NUMERIC(12, 2) NOT NULL DEFAULT 0.00,
+    maturity_year INT NOT NULL
 );
 
 CREATE TABLE merchant (

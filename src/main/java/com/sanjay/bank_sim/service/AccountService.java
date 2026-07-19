@@ -31,7 +31,7 @@ public class AccountService {
     @Transactional
     public void deposit(int accountId, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) > 0) {
-            Account account = getAccountById(accountId);
+            Account account = this.getAccountById(accountId);
             this.accountRepository.updateBalance(accountId, amount);
             this.accountRepository.updateTransaction(accountId, amount, "Deposit");
         } else {
@@ -42,7 +42,7 @@ public class AccountService {
     @Transactional
     public void withdraw(int accountId, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) > 0) {
-            Account account = getAccountById(accountId);
+            Account account = this.getAccountById(accountId);
             if (account.getBalance().compareTo(amount) < 0) {
                 throw new InsufficientFundsException(accountId);
             }

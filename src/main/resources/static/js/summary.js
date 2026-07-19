@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const accountId = params.get('account');
 
-document.getElementById('back-btn').href = `/transactions.html?account=${accountId}`;
+document.getElementById('back-btn').href = `/pages/transactions.html?account=${accountId}`;
 document.getElementById('generated-date').textContent = new Date().toLocaleDateString('en-CA', {
     year: 'numeric', month: 'long', day: 'numeric'
 });
@@ -16,20 +16,26 @@ function monthLabel(yyyymm) {
 }
 
 let allWithBalances = [];
+let allWithBalancesById = {};
 let activeType = 'all';
 let activeTab = 'statement';
 let backendSummary = null;
 let chartInstance = null;
 
-function getFiltered() {
+async function getFiltered() {
     const month = document.getElementById('month-picker').value;
-    return allWithBalances.filter(t => {
-        const matchesMonth = !month || t.date.startsWith(month);
-        const matchesType  = activeType === 'all'
-            || (activeType === 'in'  && t.amount > 0)
-            || (activeType === 'out' && t.amount < 0);
-        return matchesMonth && matchesType;
-    });
+    let base;
+    if (month) {
+        const raw = await API.transactions.getByAccountId(accountId, month);
+        base = raw.map(t => allWithBalancesById[t.id] || t);
+    } else {
+        base = allWithBalances;
+    }
+    return base.filter(t =>
+        activeType === 'all'
+        || (activeType === 'in'  && t.amount > 0)
+        || (activeType === 'out' && t.amount < 0)
+    );
 }
 
 function renderStats({ openingBalance, closingBalance, cashIn, cashOut, totalAmount, transactions }) {
@@ -63,9 +69,9 @@ function renderTable(filtered) {
     });
 }
 
-function render() {
+async function render() {
     const month = document.getElementById('month-picker').value;
-    const filtered = getFiltered();
+    const filtered = await getFiltered();
 
     document.getElementById('period-label').textContent = month ? monthLabel(month) : 'All Time';
 
@@ -87,8 +93,6 @@ function render() {
     renderTable(filtered);
 }
 
-// ── Charts ──────────────────────────────────────────────────────
-
 function buildCashFlowData() {
     const byMonth = {};
     allWithBalances.forEach(t => {
@@ -100,7 +104,7 @@ function buildCashFlowData() {
     const months = Object.keys(byMonth).sort();
     return {
         labels: months.map(monthLabel),
-        cashIn:  months.map(m => +byMonth[m].cashIn.toFixed(2)),
+        cashIn: months.map(m => +byMonth[m].cashIn.toFixed(2)),
         cashOut: months.map(m => +byMonth[m].cashOut.toFixed(2))
     };
 }
@@ -131,8 +135,8 @@ function renderChart() {
             data: {
                 labels,
                 datasets: [
-                    { label: 'Cash In',  data: cashIn,  backgroundColor: '#2563eb', barPercentage: 0.4 },
-                    { label: 'Cash Out', data: cashOut, backgroundColor: '#d97706', barPercentage: 0.4 }
+                    { label: 'Cash In',  data: cashIn,  backgroundColor: '#3c6ea5', barPercentage: 0.4 },
+                    { label: 'Cash Out', data: cashOut, backgroundColor: '#daca9d', barPercentage: 0.4 }
                 ]
             },
             options: chartOptions('Amount (CAD)')
@@ -146,7 +150,7 @@ function renderChart() {
                 datasets: [{
                     label: 'Total Amount',
                     data: values,
-                    backgroundColor: '#2563eb',
+                    backgroundColor: '#3c6ea5',
                     barPercentage: 0.5
                 }]
             },
@@ -176,8 +180,6 @@ function chartOptions(yLabel) {
     };
 }
 
-// ── Section nav ──────────────────────────────────────────────────
-
 const statementControls = document.querySelector('.statement-controls');
 
 document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -195,8 +197,6 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 
 document.getElementById('chart-type').addEventListener('change', renderChart);
 
-// ── Filters ──────────────────────────────────────────────────────
-
 document.getElementById('month-picker').addEventListener('change', render);
 
 document.querySelectorAll('.type-btn').forEach(btn => {
@@ -207,8 +207,6 @@ document.querySelectorAll('.type-btn').forEach(btn => {
         render();
     });
 });
-
-// ── Load ─────────────────────────────────────────────────────────
 
 function populateMonthPicker(transactions) {
     const months = [...new Set(transactions.map(t => t.date.slice(0, 7)))].sort().reverse();
@@ -233,14 +231,17 @@ async function load() {
 
     document.getElementById('customer-name').textContent = customer.name;
     document.getElementById('account-label').textContent =
-        `${account.type.charAt(0).toUpperCase() + account.type.slice(1)} — #A${String(account.id).padStart(3, '0')}`;
+        `${account.type.charAt(0).toUpperCase() + account.type.slice(1)} #A${String(account.id).padStart(3, '0')}`;
 
     const chronological = [...transactions].sort((a, b) => a.id - b.id);
     const total = chronological.reduce((s, t) => s + t.amount, 0);
     let running = account.balance - total;
+    allWithBalancesById = {};
     allWithBalances = chronological.map(t => {
         running += t.amount;
-        return { date: t.date, description: t.description, amount: t.amount, balance: running };
+        const entry = { id: t.id, date: t.date, description: t.description, amount: t.amount, balance: running };
+        allWithBalancesById[t.id] = entry;
+        return entry;
     }).reverse();
 
     backendSummary = summary;

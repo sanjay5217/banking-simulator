@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Cards - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/credit-cards.css">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a href="#" id="back-btn" class="back">← Dashboard</a>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
+        </header>
+
+        <main>
+            <div class="cc-grid" id="cc-grid"></div>
+            <p class="empty-state" id="no-cards" style="display:none">No credit cards on file.</p>
+        </main>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/credit-cards.js"></script>
+</body>
+</html>

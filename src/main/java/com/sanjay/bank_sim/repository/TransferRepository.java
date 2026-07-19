@@ -23,7 +23,6 @@ public class TransferRepository {
     }
 
     private Transfer mapRow(ResultSet rs, int rowNum) throws SQLException {
-
         return new Transfer(
                 rs.getInt("transferid"),
                 rs.getInt("from_accountId"),

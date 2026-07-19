@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/index.css">
+</head>
+<body>
+    <div class="login-page">
+        <header class="login-header">
+            <div class="brand-lockup">
+                <img src="/images/bank-logo.png" class="brand-logo" alt="">
+                <span class="login-brand">Blue Sea Bank</span>
+            </div>
+            <p class="login-sub">Select your profile to continue</p>
+        </header>
+
+        <div class="search-wrap">
+            <input type="text" id="search" class="search-input" placeholder="Search by name...">
+        </div>
+
+        <div class="customer-grid" id="customer-grid"></div>
+
+        <p class="no-results" id="no-results" style="display:none">No customers found.</p>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const accountId = params.get('account');
 
-document.getElementById('back-btn').href = `/transactions.html?account=${accountId}`;
+document.getElementById('back-btn').href = `/pages/transactions.html?account=${accountId}`;
 
 function fmt(n) {
     return '$' + Number(n).toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -24,7 +24,7 @@ async function load() {
         accounts.filter(a => a.id !== account.id).forEach(a => {
             const opt = document.createElement('option');
             opt.value = a.id;
-            opt.textContent = `${a.type.charAt(0).toUpperCase() + a.type.slice(1)} #A${String(a.id).padStart(3, '0')} — ${fmt(a.balance)}`;
+            opt.textContent = `${a.type.charAt(0).toUpperCase() + a.type.slice(1)} #A${String(a.id).padStart(3, '0')} (${fmt(a.balance)})`;
             internalSelect.appendChild(opt);
         });
 
@@ -51,7 +51,7 @@ document.getElementById('external-customer').addEventListener('change', async (e
         accounts.forEach(a => {
             const opt = document.createElement('option');
             opt.value = a.id;
-            opt.textContent = `${a.type.charAt(0).toUpperCase() + a.type.slice(1)} #A${String(a.id).padStart(3, '0')} — ${fmt(a.balance)}`;
+            opt.textContent = `${a.type.charAt(0).toUpperCase() + a.type.slice(1)} #A${String(a.id).padStart(3, '0')} (${fmt(a.balance)})`;
             toSelect.appendChild(opt);
         });
     } catch (err) {
@@ -72,7 +72,7 @@ document.getElementById('internal-form').addEventListener('submit', async (e) =>
     btn.textContent = 'Processing...';
     try {
         await API.transfers.internal({ fromAccountId: Number(accountId), toAccountId: Number(toId), amount });
-        window.location.href = `/transactions.html?account=${accountId}`;
+        window.location.href = `/pages/transactions.html?account=${accountId}`;
     } catch (e) {
         errEl.textContent = 'Transfer failed: ' + e.message;
         btn.disabled = false;
@@ -94,7 +94,7 @@ document.getElementById('external-form').addEventListener('submit', async (e) =>
     btn.textContent = 'Processing...';
     try {
         await API.transfers.external(Number(toId), { fromAccountId: Number(accountId), amount });
-        window.location.href = `/transactions.html?account=${accountId}`;
+        window.location.href = `/pages/transactions.html?account=${accountId}`;
     } catch (e) {
         errEl.textContent = 'Transfer failed: ' + e.message;
         btn.disabled = false;

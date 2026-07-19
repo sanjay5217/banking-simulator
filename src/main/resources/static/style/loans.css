@@ -1,0 +1,341 @@
+/* Tab header row */
+.loan-tabs-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.loan-tabs-header .loan-tabs {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.btn-take-loan {
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    background: #C9A227;
+    color: #0B2E59;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.15s;
+    flex-shrink: 0;
+}
+
+.btn-take-loan:hover { background: #b8911f; }
+
+/* Application form */
+.loan-form-panel {
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.loan-form-heading {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #0B2E59;
+    margin-bottom: 18px;
+}
+
+.loan-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.loan-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.loan-form-field label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #3B6EA5;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.loan-form-hint {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #6B7F99;
+}
+
+.loan-form-field select,
+.loan-form-field input[type="number"] {
+    background: #F4F6F9;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: #14213D;
+    outline: none;
+    width: 100%;
+    font-family: inherit;
+}
+
+.loan-form-field select:focus,
+.loan-form-field input[type="number"]:focus {
+    border-color: #3B6EA5;
+}
+
+.loan-form-msg {
+    font-size: 12px;
+    min-height: 18px;
+    margin-bottom: 14px;
+}
+
+.loan-form-msg.error   { color: #B3261E; }
+.loan-form-msg.success { color: #1E7A46; }
+
+.loan-form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-loan-apply {
+    padding: 9px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    background: #0B2E59;
+    color: #F4F6F9;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.btn-loan-apply:hover:not(:disabled) { background: #3B6EA5; }
+.btn-loan-apply:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-loan-cancel {
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #C9A227;
+    background: transparent;
+    color: #C9A227;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.btn-loan-cancel:hover { background: rgba(201, 162, 39, 0.08); }
+
+/* Loan tab selector */
+.loan-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.loan-tab {
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #C9A227;
+    background: #ffffff;
+    color: #3B6EA5;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.1s, color 0.1s;
+}
+
+.loan-tab.active {
+    background: #0B2E59;
+    color: #F4F6F9;
+    border-color: #0B2E59;
+}
+
+.loan-tab:hover:not(.active) {
+    background: #F4F6F9;
+}
+
+/* Stats bar */
+.loan-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.loan-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 22px;
+    border-right: 1px solid #F4F6F9;
+}
+
+.loan-stat:last-child {
+    border-right: none;
+}
+
+.loan-stat-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #3B6EA5;
+}
+
+.loan-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #14213D;
+}
+
+/* Progress card */
+.loan-progress-card {
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.loan-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loan-progress-heading {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0B2E59;
+}
+
+.progress-pct {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0B2E59;
+}
+
+.loan-progress-track {
+    background: #F4F6F9;
+    border-radius: 99px;
+    height: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+}
+
+.loan-progress-fill {
+    background: #1E7A46;
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+}
+
+.loan-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #3B6EA5;
+    font-weight: 500;
+}
+
+/* Amortization schedule table */
+.schedule-wrap {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 420px;
+    margin: 0 -4px;
+    border-radius: 12px;
+    border: 1px solid #C9A227;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 520px;
+}
+
+.schedule-table thead tr {
+    background: #0B2E59;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.schedule-table thead th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #F4F6F9;
+}
+
+.schedule-table thead th.num { text-align: right; }
+
+.schedule-table tbody tr {
+    border-bottom: 1px solid #F4F6F9;
+    transition: background 0.1s;
+}
+
+.schedule-table tbody tr:hover { background: #F7FAFD; }
+
+.schedule-table tbody td {
+    padding: 11px 16px;
+    color: #14213D;
+    font-variant-numeric: tabular-nums;
+}
+
+.schedule-table tbody td.num { text-align: right; }
+
+.schedule-table .interest-cell { color: #3B6EA5; }
+
+.schedule-table .future-row td { color: #9ca3af; }
+
+.schedule-table .paid-row td:first-child {
+    color: #1E7A46;
+    font-weight: 600;
+}
+
+.schedule-table .empty-row td {
+    text-align: center;
+    color: #3B6EA5;
+    padding: 32px;
+}
+
+.empty-state {
+    text-align: center;
+    color: #3B6EA5;
+    padding: 60px;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+}

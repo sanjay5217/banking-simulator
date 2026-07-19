@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdraw — BankDB</title>
-    <link rel="stylesheet" href="style/dashboard.css">
+    <title>Deposit - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
 </head>
 <body>
     <div class="page">
         <header class="topbar">
             <a href="#" id="back-btn" class="back">← Back</a>
-            <span class="brand">BankDB</span>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
         </header>
         <main class="form-page">
             <div class="form-card">
                 <div class="form-card-header">
-                    <h1 class="form-title">Withdraw</h1>
+                    <h1 class="form-title">Deposit</h1>
                     <div class="form-account-info">
-                        <span class="acct-label" id="account-label">—</span>
-                        <span class="acct-balance" id="account-balance">—</span>
+                        <span class="acct-label" id="account-label"></span>
+                        <span class="acct-balance" id="account-balance"></span>
                     </div>
                 </div>
                 <form id="action-form">
@@ -27,12 +27,12 @@
                         <input type="number" id="amount" step="0.01" min="0.01" placeholder="0.00" autofocus>
                     </div>
                     <p class="form-error" id="form-error"></p>
-                    <button type="submit" class="btn-primary" id="submit-btn">Withdraw</button>
+                    <button type="submit" class="btn-primary" id="submit-btn">Deposit</button>
                 </form>
             </div>
         </main>
     </div>
-    <script src="js/api.js"></script>
-    <script src="js/withdraw.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/deposit.js"></script>
 </body>
 </html>

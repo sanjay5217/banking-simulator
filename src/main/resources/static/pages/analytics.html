@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spending Analytics - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/analytics.css">
+</head>
+<body>
+    <div class="page page-wide">
+        <header class="topbar">
+            <a href="#" id="back-btn" class="back">← Back</a>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
+        </header>
+
+        <main>
+            <div class="analytics-controls">
+                <div class="filter-group">
+                    <label class="filter-label">Account</label>
+                    <select id="account-picker" class="analytics-select"></select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Month</label>
+                    <input type="month" id="month-picker" class="analytics-select">
+                </div>
+            </div>
+
+            <div class="analytics-stats">
+                <div class="a-stat">
+                    <span class="a-stat-label">Total Spent</span>
+                    <span class="a-stat-value" id="stat-total"></span>
+                </div>
+                <div class="a-stat">
+                    <span class="a-stat-label">Top Category</span>
+                    <span class="a-stat-value a-stat-value--sm" id="stat-top"></span>
+                </div>
+                <div class="a-stat">
+                    <span class="a-stat-label">Categories</span>
+                    <span class="a-stat-value" id="stat-count"></span>
+                </div>
+                <div class="a-stat">
+                    <span class="a-stat-label">Avg per Category</span>
+                    <span class="a-stat-value" id="stat-avg"></span>
+                </div>
+            </div>
+
+            <div class="analytics-main" id="analytics-main" style="display:none">
+                <div class="section analytics-chart-card">
+                    <h2 class="section-title">By Category</h2>
+                    <div class="analytics-chart-wrap">
+                        <canvas id="spending-chart"></canvas>
+                    </div>
+                </div>
+                <div class="section analytics-table-card">
+                    <h2 class="section-title">Breakdown</h2>
+                    <table class="a-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th class="num">Spent</th>
+                                <th class="num">% of Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analytics-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="analytics-empty" id="analytics-empty">
+                Select an account and month to view spending analytics.
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/analytics.js"></script>
+</body>
+</html>

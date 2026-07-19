@@ -48,6 +48,11 @@ public class TransactionRepository {
         return this.jdbc.query(sql, this::mapRow, accountid);
     }
 
+    public List<Transaction> findByAccountIdAndMonth(int accountId, String month) {
+        String sql = SqlLoader.load("transaction/get_by_account_id_month.sql");
+        return this.jdbc.query(sql, this::mapRow, accountId, month);
+    }
+
     public List<Transaction> findByQuery(String query) {
         String sql = SqlLoader.load("transaction/get_by_query.sql");
         String query_sql = "%" + query + "%";

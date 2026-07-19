@@ -1,0 +1,312 @@
+.cc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+/* Card tile container */
+.cc-tile {
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Card art (top dark section) */
+.cc-card-art {
+    background: linear-gradient(135deg, #0B2E59 55%, #163d6e);
+    padding: 22px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative circles (Mastercard-style overlap) */
+.cc-card-art::before,
+.cc-card-art::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
+
+.cc-card-art::before {
+    right: 42px;
+    background: rgba(201, 162, 39, 0.45);
+}
+
+.cc-card-art::after {
+    right: 20px;
+    background: rgba(201, 162, 39, 0.25);
+}
+
+.cc-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.cc-bank-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #F4F6F9;
+}
+
+.cc-id {
+    font-size: 12px;
+    color: #C9A227;
+    font-weight: 600;
+}
+
+.cc-chip {
+    width: 32px;
+    height: 24px;
+    background: linear-gradient(135deg, #C9A227, #e8c84a);
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.cc-balance-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.cc-balance-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(244, 246, 249, 0.55);
+    margin-bottom: 3px;
+}
+
+.cc-balance-display {
+    font-size: 22px;
+    font-weight: 700;
+    color: #F4F6F9;
+    letter-spacing: -0.5px;
+}
+
+/* Card body */
+.cc-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cc-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+}
+
+.cc-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 12px;
+    border-right: 1px solid #F4F6F9;
+}
+
+.cc-stat:last-child {
+    border-right: none;
+    padding-right: 0;
+    padding-left: 12px;
+}
+
+.cc-stat:nth-child(2) {
+    padding-left: 12px;
+}
+
+.cc-stat-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #3B6EA5;
+}
+
+.cc-stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #14213D;
+}
+
+/* Utilization bar */
+.cc-util {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cc-util-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #3B6EA5;
+    font-weight: 500;
+}
+
+.cc-util-track {
+    background: #F4F6F9;
+    border-radius: 99px;
+    height: 7px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+}
+
+.cc-util-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+.cc-util-fill.low    { background: #1E7A46; }
+.cc-util-fill.medium { background: #C9A227; }
+.cc-util-fill.high   { background: #B3261E; }
+
+.empty-state {
+    text-align: center;
+    color: #3B6EA5;
+    padding: 60px;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+}
+
+/* Card list footer */
+.cc-tile-footer {
+    padding: 12px 24px;
+    border-top: 1px solid #F4F6F9;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Detail page container */
+.cc-detail {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 40px;
+}
+
+.cc-detail-panel {
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+    padding: 20px 24px;
+}
+
+/* Shared action styles (used by detail page) */
+.cc-action-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #3B6EA5;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cc-min-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #6B7F99;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.cc-action-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.cc-action-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.cc-action-field.cc-field-sm {
+    flex: 0 0 100px;
+}
+
+.cc-action-field label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6B7F99;
+}
+
+.cc-action-field select,
+.cc-action-field input[type="number"] {
+    background: #F4F6F9;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #14213D;
+    outline: none;
+    width: 100%;
+}
+
+.cc-action-field select:focus,
+.cc-action-field input[type="number"]:focus {
+    border-color: #3B6EA5;
+}
+
+.cc-action-btn {
+    background: #0B2E59;
+    color: #F4F6F9;
+    border: none;
+    border-radius: 6px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 33px;
+    align-self: flex-end;
+    transition: background 0.15s;
+}
+
+.cc-action-btn:hover {
+    background: #3B6EA5;
+}
+
+.cc-action-btn.secondary {
+    background: transparent;
+    border: 1px solid #C9A227;
+    color: #C9A227;
+}
+
+.cc-action-btn.secondary:hover {
+    background: rgba(201, 162, 39, 0.1);
+}
+
+.cc-action-msg {
+    font-size: 11px;
+    min-height: 16px;
+    margin-top: 6px;
+}
+
+.cc-action-msg.error   { color: #B3261E; }
+.cc-action-msg.success { color: #1E7A46; }

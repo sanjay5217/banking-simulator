@@ -12,7 +12,12 @@ async function post(path, body) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
     });
-    if (!res.ok) throw new Error(`POST ${path} failed: ${res.status}`);
+    if (!res.ok) {
+        const text = await res.text();
+        let message = `POST ${path} failed: ${res.status}`;
+        try { const j = JSON.parse(text); if (j.error) message = j.error; } catch {}
+        throw new Error(message);
+    }
     const text = await res.text();
     return text ? JSON.parse(text) : null;
 }
@@ -33,7 +38,7 @@ const API = {
     },
 
     transactions: {
-        getByAccountId: (accountId) => get(`/transaction/${accountId}`),
+        getByAccountId: (accountId, month) => get(`/transaction/${accountId}${month ? '?month=' + month : ''}`),
         getByQuery: (query) => get(`/transaction/search/${query}`),
     },
 
@@ -41,5 +46,43 @@ const API = {
         internal: (body) => post(`/transfer/${body.toAccountId}`, body),
         external: (toAccountId, body) => post(`/transfer/${toAccountId}`, body),
         getHistory: (accountId) => get(`/transfer/summary/${accountId}`)
+    },
+
+    loans: {
+        getByCustomer: (customerId) => get(`/loans/customer/${customerId}`),
+        getById: (id) => get(`/loans/${id}`),
+        getSchedule: (id) => get(`/loans/${id}/schedule`),
+        getMonthlyPayment: (id) => get(`/loans/${id}/monthly-payment`),
+        create: (customerId, body) => post(`/loans/customer/${customerId}`, body),
+    },
+
+    creditCards: {
+        getByCustomer: (customerId) => get(`/credit-cards/customer/${customerId}`),
+        getById: (id) => get(`/credit-cards/${id}`),
+        purchase: (creditId, body) => post(`/credit-cards/${creditId}/purchase`, body),
+        getMinimumPayment: (creditId) => get(`/credit-cards/${creditId}/minimum-payment`),
+        pay: (creditId, body) => post(`/credit-cards/${creditId}/pay`, body)
+    },
+
+    merchants: {
+        getAll: () => get('/merchants')
+    },
+
+    fraud: {
+        getByCustomer: (customerId) => get(`/fraud/customer/${customerId}`),
+        getUnresolved: () => get('/fraud/unresolved'),
+        resolve: (flagId) => post(`/fraud/${flagId}/resolve`, {}),
+        detect: (accountId) => post(`/fraud/detect/${accountId}`, {}),
+    },
+
+    analytics: {
+        getSpending: (accountId, month) => {
+            const q = month ? `?month=${month}` : '';
+            return get(`/analytics/${accountId}${q}`);
+        }
+    },
+
+    interest: {
+        run: () => post('/interest-engine/run', {})
     }
 };

@@ -18,8 +18,10 @@ public class TransactionController {
     }
 
     @GetMapping("/{accountid}")
-    public ResponseEntity<List<Transaction>> getTransactionByAccountId(@PathVariable int accountid) {
-        return ResponseEntity.ok(this.transactionService.getByAccountId(accountid));
+    public ResponseEntity<List<Transaction>> getTransactionByAccountId(
+            @PathVariable int accountid,
+            @RequestParam(required = false) String month) {
+        return ResponseEntity.ok(transactionService.getByAccountId(accountid, month));
     }
 
     @GetMapping("/search/{query}")

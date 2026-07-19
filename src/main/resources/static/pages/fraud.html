@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Flags - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/fraud.css">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a href="#" id="back-btn" class="back">← Dashboard</a>
+            <div class="brand-lockup">
+                <img src="/images/bank-logo.png" class="brand-logo" alt="">
+                <span class="brand">Blue Sea Bank</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="fraud-header">
+                <h2 class="fraud-title">Fraud Flags</h2>
+                <button class="btn-detect" id="detect-btn">Run Detection</button>
+            </div>
+
+            <div id="detect-status" class="detect-status" style="display:none"></div>
+
+            <div class="section">
+                <p class="section-title">Flagged Transactions</p>
+                <div id="flags-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/fraud.js"></script>
+</body>
+</html>

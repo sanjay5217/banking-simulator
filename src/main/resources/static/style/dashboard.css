@@ -46,6 +46,20 @@ body {
     color: #0B2E59;
 }
 
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
 /* Customer Card */
 .customer-card {
     background: #ffffff;
@@ -451,7 +465,7 @@ body {
     background: #F4F6F9;
 }
 
-/* Form pages — deposit, withdraw, transfer */
+/* Form pages: deposit, withdraw, transfer */
 .form-page {
     display: flex;
     flex-direction: column;
@@ -563,6 +577,37 @@ body {
     font-size: 12px;
     color: #B3261E;
     min-height: 16px;
+}
+
+/* Simulation controls */
+.sim-controls {
+    margin-top: 20px;
+}
+
+.btn-interest {
+    padding: 11px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.4px;
+    background: #C9A227;
+    color: #14213D;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+}
+
+.btn-interest:hover:not(:disabled) {
+    background: #b8911f;
+}
+
+.btn-interest.cooling {
+    background: #F4F6F9;
+    color: #3B6EA5;
+    border: 1px solid #C9A227;
+    cursor: not-allowed;
+    opacity: 0.8;
 }
 
 /* Transfer page two-column layout */

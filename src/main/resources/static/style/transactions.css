@@ -99,7 +99,9 @@
     background: #ffffff;
     border: 1px solid #C9A227;
     border-radius: 12px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 480px;
     margin-bottom: 0;
 }
 
@@ -111,6 +113,9 @@
 
 .txn-table thead tr {
     background: #0B2E59;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .txn-table thead th {

@@ -4,6 +4,7 @@ import com.sanjay.bank_sim.model.Account;
 import com.sanjay.bank_sim.utils.SqlLoader;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import com.sanjay.bank_sim.utils.AccountFactory;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
@@ -21,12 +22,7 @@ public class AccountRepository {
     }
 
     private Account mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Account(
-            rs.getInt("accountid"),
-            rs.getInt("customerid"),
-            rs.getString("type"),
-            rs.getBigDecimal("balance")
-        );
+        return AccountFactory.createAccount(rs, rowNum);
     }
 
     public List<Account> findByCustomerId(int customerId) {
@@ -47,5 +43,10 @@ public class AccountRepository {
     public void updateTransaction(int accountId, BigDecimal amount, String description) {
         String sql = SqlLoader.load("account/update_transaction.sql");
         jdbc.update(sql, accountId, description, amount);
+    }
+
+    public void updateAllInterest() {
+        String sql = SqlLoader.load("account/update_all_interest.sql");
+        jdbc.update(sql);
     }
 }

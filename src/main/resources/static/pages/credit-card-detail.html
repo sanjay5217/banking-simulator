@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Detail - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/credit-cards.css">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a href="#" id="back-btn" class="back">← Cards</a>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
+        </header>
+
+        <main>
+            <div class="cc-detail">
+                <div class="cc-tile">
+                    <div class="cc-card-art">
+                        <div class="cc-card-top">
+                            <span class="cc-bank-name">Blue Sea Bank</span>
+                            <span class="cc-id" id="cc-id"></span>
+                        </div>
+                        <div class="cc-chip"></div>
+                        <div class="cc-balance-wrap">
+                            <div class="cc-balance-label">Current Balance</div>
+                            <div class="cc-balance-display" id="cc-balance"></div>
+                        </div>
+                    </div>
+                    <div class="cc-body">
+                        <div class="cc-stats">
+                            <div class="cc-stat">
+                                <span class="cc-stat-label">Credit Limit</span>
+                                <span class="cc-stat-value" id="cc-limit"></span>
+                            </div>
+                            <div class="cc-stat">
+                                <span class="cc-stat-label">Available</span>
+                                <span class="cc-stat-value" id="cc-available"></span>
+                            </div>
+                            <div class="cc-stat">
+                                <span class="cc-stat-label">APR</span>
+                                <span class="cc-stat-value" id="cc-apr"></span>
+                            </div>
+                        </div>
+                        <div class="cc-util">
+                            <div class="cc-util-label">
+                                <span>Utilization</span>
+                                <span id="cc-util-pct"></span>
+                            </div>
+                            <div class="cc-util-track">
+                                <div class="cc-util-fill" id="cc-util-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cc-detail-panel">
+                    <div class="cc-action-title">Make a Purchase</div>
+                    <div class="cc-action-row">
+                        <div class="cc-action-field">
+                            <label>Merchant</label>
+                            <select id="merchant-select"></select>
+                        </div>
+                        <div class="cc-action-field cc-field-sm">
+                            <label>Amount</label>
+                            <input type="number" id="purchase-amount" step="0.01" min="0.01" placeholder="0.00">
+                        </div>
+                        <button class="cc-action-btn" id="charge-btn">Charge</button>
+                    </div>
+                    <div class="cc-action-msg" id="purchase-msg"></div>
+                </div>
+
+                <div class="cc-detail-panel">
+                    <div class="cc-action-title">Pay Card <span class="cc-min-label" id="min-label"></span></div>
+                    <div class="cc-action-row">
+                        <div class="cc-action-field">
+                            <label>From Account</label>
+                            <select id="account-select"></select>
+                        </div>
+                        <div class="cc-action-field cc-field-sm">
+                            <label>Amount</label>
+                            <input type="number" id="pay-amount" step="0.01" min="0.01" placeholder="0.00">
+                        </div>
+                        <button class="cc-action-btn secondary" id="min-btn">Min</button>
+                        <button class="cc-action-btn" id="pay-btn">Pay</button>
+                    </div>
+                    <div class="cc-action-msg" id="pay-msg"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/credit-card-detail.js"></script>
+</body>
+</html>

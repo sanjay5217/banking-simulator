@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/loans.css">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a href="#" id="back-btn" class="back">← Dashboard</a>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
+        </header>
+
+        <main>
+            <div class="loan-tabs-header">
+                <div class="loan-tabs" id="loan-tabs"></div>
+                <button class="btn-take-loan" id="btn-take-loan">+ Take Loan</button>
+            </div>
+
+            <div class="loan-form-panel" id="loan-form-panel" style="display:none">
+                <div class="loan-form-heading">Apply for a Loan</div>
+                <div class="loan-form-grid">
+                    <div class="loan-form-field">
+                        <label>Type</label>
+                        <select id="loan-type">
+                            <option value="personal">Personal</option>
+                            <option value="mortgage">Mortgage</option>
+                            <option value="auto">Auto</option>
+                            <option value="student">Student</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+                    <div class="loan-form-field">
+                        <label>Principal <span class="loan-form-hint" id="amount-hint"></span></label>
+                        <input type="number" id="loan-principal" step="0.01" min="0.01" placeholder="0.00">
+                    </div>
+                    <div class="loan-form-field">
+                        <label>Annual Rate (%)</label>
+                        <input type="number" id="loan-rate" step="0.01" min="0.01" max="30" placeholder="8.99">
+                    </div>
+                    <div class="loan-form-field">
+                        <label>Term (months) <span class="loan-form-hint" id="term-hint"></span></label>
+                        <input type="number" id="loan-term" step="1" min="1" placeholder="36">
+                    </div>
+                </div>
+                <div class="loan-form-msg" id="loan-form-msg"></div>
+                <div class="loan-form-actions">
+                    <button class="btn-loan-apply" id="loan-apply-btn">Apply</button>
+                    <button class="btn-loan-cancel" id="loan-cancel-btn">Cancel</button>
+                </div>
+            </div>
+
+            <div id="loan-detail" style="display:none">
+
+                <div class="loan-stats-bar">
+                    <div class="loan-stat">
+                        <span class="loan-stat-label">Monthly Payment</span>
+                        <span class="loan-stat-value" id="detail-monthly"></span>
+                    </div>
+                    <div class="loan-stat">
+                        <span class="loan-stat-label">Principal</span>
+                        <span class="loan-stat-value" id="detail-principal"></span>
+                    </div>
+                    <div class="loan-stat">
+                        <span class="loan-stat-label">Interest Rate</span>
+                        <span class="loan-stat-value" id="detail-rate"></span>
+                    </div>
+                    <div class="loan-stat">
+                        <span class="loan-stat-label">Term</span>
+                        <span class="loan-stat-value" id="detail-term"></span>
+                    </div>
+                    <div class="loan-stat">
+                        <span class="loan-stat-label">Start Date</span>
+                        <span class="loan-stat-value" id="detail-start"></span>
+                    </div>
+                </div>
+
+                <div class="loan-progress-card" id="loan-progress-section" style="display:none">
+                    <div class="loan-progress-top">
+                        <span class="loan-progress-heading">Repayment Progress</span>
+                        <span class="progress-pct" id="progress-pct">0%</span>
+                    </div>
+                    <div class="loan-progress-track">
+                        <div class="loan-progress-fill" id="progress-fill" style="width:0%"></div>
+                    </div>
+                    <div class="loan-progress-labels">
+                        <span id="progress-label">0 / 0 payments made</span>
+                        <span id="progress-remaining"></span>
+                    </div>
+                </div>
+
+                <section class="section">
+                    <h2 class="section-title">Amortization Schedule</h2>
+                    <div class="schedule-wrap">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Payment Date</th>
+                                    <th class="num">Payment</th>
+                                    <th class="num">Principal</th>
+                                    <th class="num">Interest</th>
+                                    <th class="num">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedule-body">
+                                <tr class="empty-row"><td colspan="6">Loading schedule...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+
+            <p class="empty-state" id="no-loans" style="display:none">No active loans on this account.</p>
+        </main>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/loans.js"></script>
+</body>
+</html>

@@ -3,28 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking Simulator</title>
-    <link rel="stylesheet" href="style/index.css">
+    <title>Blue Sea Bank</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:   #0B2E59;
+            --blue:   #3B6EA5;
+            --gold:   #C9A227;
+            --light:  #F4F6F9;
+            --text:   #14213D;
+            --muted:  #5a7a9e;
+            --border: rgba(11, 46, 89, 0.12);
+        }
+
+        body {
+            background: #ffffff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .splash {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px 56px;
+        }
+
+        /* ── Header ──────────────────────────────────────── */
+        .splash-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 24px;
+            box-shadow: 0 0 0 1px rgba(201,162,39,0.45);
+        }
+
+        .splash-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: normal;
+            color: var(--navy);
+            letter-spacing: -1.5px;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .splash-sub {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 36px;
+        }
+
+        .gold-rule {
+            width: 36px;
+            height: 2px;
+            background: var(--gold);
+            margin-bottom: 44px;
+        }
+
+        /* ── Two-column visuals ───────────────────────────── */
+        .visuals {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            width: 100%;
+            margin-top: 52px;
+            align-items: start;
+        }
+
+        @media (max-width: 640px) {
+            .visuals { grid-template-columns: 1fr; }
+        }
+
+        /* ── Mini Dashboard Mockup ───────────────────────── */
+        .mockup {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(11,46,89,0.08);
+            text-align: left;
+            user-select: none;
+        }
+
+        .m-topbar {
+            background: var(--navy);
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .m-back {
+            width: 36px;
+            height: 6px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 3px;
+        }
+
+        .m-brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .m-brand-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.8;
+        }
+
+        .m-brand-text {
+            width: 52px;
+            height: 5px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 3px;
+        }
+
+        .m-body {
+            background: var(--light);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Customer card */
+        .m-customer {
+            background: #ffffff;
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .m-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--navy);
+            flex-shrink: 0;
+        }
+
+        .m-customer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .m-line-lg {
+            height: 6px;
+            background: var(--text);
+            border-radius: 3px;
+            width: 70%;
+            opacity: 0.7;
+        }
+
+        .m-line-sm {
+            height: 5px;
+            background: var(--muted);
+            border-radius: 3px;
+            width: 50%;
+            opacity: 0.4;
+        }
+
+        .m-customer-meta {
+            display: flex;
+            gap: 12px;
+            margin-left: auto;
+        }
+
+        .m-meta-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: flex-end;
+        }
+
+        .m-meta-label {
+            height: 4px;
+            width: 28px;
+            background: var(--muted);
+            border-radius: 2px;
+            opacity: 0.35;
+        }
+
+        .m-meta-val {
+            height: 5px;
+            width: 36px;
+            background: var(--navy);
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        /* Account cards */
+        .m-accounts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .m-acct {
+            background: #ffffff;
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .m-acct-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .m-tag {
+            height: 5px;
+            width: 40px;
+            background: var(--navy);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .m-id {
+            height: 5px;
+            width: 22px;
+            background: var(--muted);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        .m-balance {
+            height: 10px;
+            width: 65%;
+            background: var(--text);
+            border-radius: 3px;
+            opacity: 0.75;
+        }
+
+        .m-view {
+            height: 5px;
+            width: 30px;
+            background: var(--blue);
+            border-radius: 2px;
+            opacity: 0.4;
+        }
+
+        /* Bottom grid */
+        .m-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .m-widget {
+            background: #ffffff;
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .m-widget-title {
+            height: 5px;
+            width: 38px;
+            background: var(--navy);
+            border-radius: 2px;
+            opacity: 0.55;
+        }
+
+        .m-bar-track {
+            height: 5px;
+            background: rgba(201,162,39,0.15);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .m-bar-fill {
+            height: 100%;
+            background: var(--blue);
+            border-radius: 99px;
+            opacity: 0.7;
+        }
+
+        .m-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .m-amount {
+            height: 5px;
+            background: var(--text);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .m-rate {
+            height: 5px;
+            background: var(--muted);
+            border-radius: 2px;
+            opacity: 0.35;
+        }
+
+        /* ── Icon grid ───────────────────────────────────── */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .icon-cell {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--light);
+        }
+
+        .icon-cell svg {
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .icon-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .icon-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .icon-desc {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ── CTA ─────────────────────────────────────────── */
+        .splash-cta {
+            display: inline-block;
+            padding: 14px 52px;
+            background: var(--gold);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .splash-cta:hover { background: #dbb82c; }
+
+        /* ── About section ───────────────────────────────── */
+        .about {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 100px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-eyebrow {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .about-heading {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(26px, 4vw, 38px);
+            font-weight: normal;
+            color: var(--navy);
+            line-height: 1.2;
+            text-wrap: balance;
+            margin-bottom: 20px;
+        }
+
+        .about-rule {
+            width: 32px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto 20px;
+        }
+
+        .about-body {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--muted);
+            text-wrap: balance;
+        }
+
+        .scroll-cue {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin-top: 40px;
+            color: var(--border);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(11, 46, 89, 0.25);
+        }
+
+        .scroll-cue-line {
+            width: 1px;
+            height: 28px;
+            background: linear-gradient(to bottom, transparent, rgba(11,46,89,0.2));
+        }
+    </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-header">
-            <h1>Banking Simulator</h1>
-            <p>Select a customer to view their dashboard</p>
-        </div>
+<div class="splash">
 
-        <div class="field">
-            <label for="customer-select">Choose a Customer</label>
-            <select id="customer-select">
-            </select>
-        </div>
+    <img src="/images/bank-logo.png" class="splash-logo" alt="Blue Sea Bank">
+    <h1 class="splash-title">Blue Sea Bank</h1>
+    <p class="splash-sub">Banking Simulation</p>
+    <div class="gold-rule"></div>
 
-        <button class="btn-primary" onclick="viewDashboard()">
-            View Dashboard →
-        </button>
+    <a href="/customers.html" class="splash-cta">Enter Simulation</a>
+
+    <div class="scroll-cue">
+        <div class="scroll-cue-line"></div>
+        Scroll
     </div>
 
-    <script src="js/api.js"></script>
-    <script src="js/index.js"></script>
+</div>
+
+<section class="about">
+    <p class="about-eyebrow">About</p>
+    <h2 class="about-heading">A complete banking experience, ready to explore.</h2>
+    <div class="about-rule"></div>
+    <p class="about-body">Select a customer to manage their accounts, view loan schedules, track credit card usage, run fraud detection, and analyse spending by category.</p>
+
+    <div class="visuals">
+
+        <!-- Mini dashboard mockup -->
+        <div class="mockup">
+            <div class="m-topbar">
+                <div class="m-back"></div>
+                <div class="m-brand">
+                    <div class="m-brand-dot"></div>
+                    <div class="m-brand-text"></div>
+                </div>
+            </div>
+            <div class="m-body">
+                <div class="m-customer">
+                    <div class="m-avatar"></div>
+                    <div class="m-customer-info">
+                        <div class="m-line-lg"></div>
+                        <div class="m-line-sm"></div>
+                    </div>
+                    <div class="m-customer-meta">
+                        <div class="m-meta-block">
+                            <div class="m-meta-label"></div>
+                            <div class="m-meta-val"></div>
+                        </div>
+                        <div class="m-meta-block">
+                            <div class="m-meta-label"></div>
+                            <div class="m-meta-val"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-accounts">
+                    <div class="m-acct">
+                        <div class="m-acct-top"><div class="m-tag"></div><div class="m-id"></div></div>
+                        <div class="m-balance"></div>
+                        <div class="m-view"></div>
+                    </div>
+                    <div class="m-acct">
+                        <div class="m-acct-top"><div class="m-tag"></div><div class="m-id"></div></div>
+                        <div class="m-balance" style="width:55%"></div>
+                        <div class="m-view"></div>
+                    </div>
+                </div>
+                <div class="m-bottom">
+                    <div class="m-widget">
+                        <div class="m-widget-title"></div>
+                        <div class="m-row">
+                            <div class="m-amount" style="width:44px"></div>
+                            <div class="m-rate" style="width:28px"></div>
+                        </div>
+                        <div class="m-row">
+                            <div class="m-amount" style="width:36px"></div>
+                            <div class="m-rate" style="width:22px"></div>
+                        </div>
+                    </div>
+                    <div class="m-widget">
+                        <div class="m-widget-title"></div>
+                        <div class="m-bar-track"><div class="m-bar-fill" style="width:62%"></div></div>
+                        <div class="m-line-sm" style="width:40%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icon grid -->
+        <div class="icon-grid">
+
+            <div class="icon-cell">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="6" width="16" height="11" rx="2"/>
+                    <path d="M2 10h16"/>
+                    <path d="M5.5 13.5h3"/>
+                </svg>
+                <div class="icon-info">
+                    <span class="icon-name">Accounts</span>
+                    <span class="icon-desc">Chequing &amp; savings with table inheritance</span>
+                </div>
+            </div>
+
+            <div class="icon-cell">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 15 L8 9 L12 12 L17 4"/>
+                    <polyline points="13,4 17,4 17,8"/>
+                </svg>
+                <div class="icon-info">
+                    <span class="icon-name">Loans</span>
+                    <span class="icon-desc">Amortization schedules &amp; payment tracking</span>
+                </div>
+            </div>
+
+            <div class="icon-cell">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="16" height="11" rx="2"/>
+                    <path d="M2 9h16"/>
+                    <circle cx="5.5" cy="12" r="1.2" fill="#C9A227" stroke="none"/>
+                </svg>
+                <div class="icon-info">
+                    <span class="icon-name">Credit Cards</span>
+                    <span class="icon-desc">Balance, limit &amp; utilization tracking</span>
+                </div>
+            </div>
+
+            <div class="icon-cell">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 2 L18 6.5 L18 13.5 L10 18 L2 13.5 L2 6.5 Z"/>
+                    <line x1="10" y1="8" x2="10" y2="11"/>
+                    <circle cx="10" cy="13.5" r="0.8" fill="#C9A227" stroke="none"/>
+                </svg>
+                <div class="icon-info">
+                    <span class="icon-name">Fraud Detection</span>
+                    <span class="icon-desc">3-sigma anomaly detection on transactions</span>
+                </div>
+            </div>
+
+            <div class="icon-cell">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="10" cy="10" r="7"/>
+                    <path d="M10 3 A7 7 0 0 1 17 10 L10 10 Z" fill="#C9A227" fill-opacity="0.2" stroke="#C9A227" stroke-width="1"/>
+                    <path d="M10 10 L17 10 A7 7 0 0 1 6.5 16.5 Z" fill="#3B6EA5" fill-opacity="0.2" stroke="#3B6EA5" stroke-width="1"/>
+                </svg>
+                <div class="icon-info">
+                    <span class="icon-name">Analytics</span>
+                    <span class="icon-desc">Spending by category, filtered by month</span>
+                </div>
+            </div>
+
+            <div class="icon-cell">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 8 L10 4 L15 8"/>
+                    <path d="M5 12 L10 16 L15 12"/>
+                    <line x1="10" y1="4" x2="10" y2="16"/>
+                    <line x1="5" y1="8" x2="5" y2="12"/>
+                    <line x1="15" y1="8" x2="15" y2="12"/>
+                </svg>
+                <div class="icon-info">
+                    <span class="icon-name">Transfers</span>
+                    <span class="icon-desc">Atomic account-to-account transfers via SQL</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard — Banking Simulator</title>
-    <link rel="stylesheet" href="style/dashboard.css">
+    <title>Dashboard - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
 </head>
 <body>
     <div class="page">
         <header class="topbar">
-            <a href="/" class="back">← All Customers</a>
-            <span class="brand">BankDB</span>
+            <a href="/pages/customers.html" class="back">← All Customers</a>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
         </header>
 
         <main class="dashboard">
@@ -52,10 +52,14 @@
                     <div id="credit-block"></div>
                 </section>
             </div>
+            <section class="section sim-controls">
+                <h2 class="section-title">Simulation Controls</h2>
+                <button class="btn-interest" id="btn-interest">Run Interest Cycle</button>
+            </section>
         </main>
     </div>
 
-    <script src="js/api.js?v=2"></script>
-    <script src="js/dashboard.js?v=2"></script>
+    <script src="/js/api.js?v=2"></script>
+    <script src="/js/dashboard.js?v=2"></script>
 </body>
 </html>

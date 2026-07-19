@@ -16,8 +16,11 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    public List<Transaction> getByAccountId(int accountId) {
-        return this.transactionRepository.findByAccountId(accountId);
+    public List<Transaction> getByAccountId(int accountId, String month) {
+        if (month != null && !month.isBlank()) {
+            return transactionRepository.findByAccountIdAndMonth(accountId, month);
+        }
+        return transactionRepository.findByAccountId(accountId);
     }
 
     public List<Transaction> getByQuery(String query) {

@@ -9,88 +9,150 @@ body {
     color: #14213D;
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
+}
+
+.login-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+}
+
+/* Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.brand-lockup {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.card {
-    background-color: #ffffff;
-    border: 1px solid #C9A227;
-    border-radius: 12px;
-    padding: 48px 40px;
-    width: 420px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.card-header h1 {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    color: #0B2E59;
-}
-
-.card-header p {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #3B6EA5;
-}
-
-.field label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: #3B6EA5;
+    gap: 12px;
     margin-bottom: 8px;
 }
 
-.field select {
+.brand-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.login-brand {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0B2E59;
+    letter-spacing: 0.3px;
+}
+
+.login-sub {
+    font-size: 14px;
+    color: #3B6EA5;
+}
+
+/* Search */
+.search-wrap {
+    margin-bottom: 28px;
+}
+
+.search-input {
     width: 100%;
-    padding: 12px 14px;
-    background-color: #F4F6F9;
-    color: #14213D;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #ffffff;
     border: 1px solid #C9A227;
     border-radius: 8px;
-    font-size: 14px;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A85527' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    cursor: pointer;
+    color: #14213D;
     outline: none;
     transition: border-color 0.15s;
 }
 
-.field select:focus {
+.search-input:focus {
     border-color: #0B2E59;
 }
 
-.field select option {
-    background-color: #F4F6F9;
+.search-input::placeholder {
+    color: #3B6EA5;
+    opacity: 0.6;
 }
 
-.btn-primary {
-    width: 100%;
-    padding: 13px;
-    background-color: #0B2E59;
-    color: #F4F6F9;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
+/* Customer grid */
+.customer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+/* Customer card */
+.customer-card {
+    background: #ffffff;
+    border: 1px solid #C9A227;
+    border-radius: 12px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     cursor: pointer;
-    transition: background-color 0.15s, opacity 0.15s;
+    transition: box-shadow 0.15s, transform 0.1s, border-color 0.15s;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
 }
 
-.btn-primary:hover {
-    background-color: #3B6EA5;
+.customer-card:hover {
+    border-color: #0B2E59;
+    box-shadow: 0 4px 16px rgba(11, 46, 89, 0.12);
+    transform: translateY(-2px);
 }
 
-.btn-primary:active {
-    opacity: 0.85;
+.customer-card:active {
+    transform: translateY(0);
+}
+
+/* Avatar */
+.c-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+/* Card text */
+.c-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #14213D;
+    line-height: 1.3;
+}
+
+.c-email {
+    font-size: 12px;
+    color: #3B6EA5;
+    word-break: break-all;
+}
+
+.c-since {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #C9A227;
+}
+
+/* Empty state */
+.no-results {
+    text-align: center;
+    color: #3B6EA5;
+    padding: 48px;
+    font-size: 14px;
 }

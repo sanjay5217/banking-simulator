@@ -23,11 +23,11 @@ public class Loan {
         this.startDate = startDate;
     }
 
-    public int getId() { return id; }
-    public int getCustomerId() { return customerId; }
-    public String getType() { return type; }
-    public BigDecimal getPrincipal() { return principal; }
-    public BigDecimal getInterestRate() { return interestRate; }
-    public int getTermMonths() { return termMonths; }
-    public LocalDate getStartDate() { return startDate; }
+    public int getId() { return this.id; }
+    public int getCustomerId() { return this.customerId; }
+    public String getType() { return this.type; }
+    public BigDecimal getPrincipal() { return this.principal; }
+    public BigDecimal getInterestRate() { return this.interestRate; }
+    public int getTermMonths() { return this.termMonths; }
+    public LocalDate getStartDate() { return this.startDate; }
 }

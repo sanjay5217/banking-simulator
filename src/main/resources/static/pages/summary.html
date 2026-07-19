@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Statement — BankDB</title>
-    <link rel="stylesheet" href="style/dashboard.css">
-    <link rel="stylesheet" href="style/summary.css">
+    <title>Account Statement - Blue Sea Bank</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/summary.css">
 </head>
 <body>
     <div class="page">
         <header class="topbar no-print">
             <a href="#" id="back-btn" class="back">← Back</a>
-            <span class="brand">BankDB</span>
+            <div class="brand-lockup"><img src="/images/bank-logo.png" class="brand-logo" alt=""><span class="brand">Blue Sea Bank</span></div>
         </header>
 
         <div class="statement-controls no-print">
@@ -43,25 +43,25 @@
 
                 <div class="doc-header">
                     <div class="doc-bank">
-                        <span class="doc-bank-name">BankDB</span>
+                        <span class="doc-bank-name">Blue Sea Bank</span>
                         <span class="doc-bank-sub">Account Statement</span>
                     </div>
                     <div class="doc-meta">
                         <div class="doc-meta-row">
                             <span class="doc-meta-label">Account Holder</span>
-                            <span class="doc-meta-value" id="customer-name">—</span>
+                            <span class="doc-meta-value" id="customer-name"></span>
                         </div>
                         <div class="doc-meta-row">
                             <span class="doc-meta-label">Account</span>
-                            <span class="doc-meta-value" id="account-label">—</span>
+                            <span class="doc-meta-value" id="account-label"></span>
                         </div>
                         <div class="doc-meta-row">
                             <span class="doc-meta-label">Period</span>
-                            <span class="doc-meta-value" id="period-label">—</span>
+                            <span class="doc-meta-value" id="period-label"></span>
                         </div>
                         <div class="doc-meta-row">
                             <span class="doc-meta-label">Generated</span>
-                            <span class="doc-meta-value" id="generated-date">—</span>
+                            <span class="doc-meta-value" id="generated-date"></span>
                         </div>
                     </div>
                 </div>
@@ -69,12 +69,12 @@
                 <div class="doc-balances">
                     <div class="doc-balance-item">
                         <span class="doc-balance-label">Opening Balance</span>
-                        <span class="doc-balance-value" id="opening-balance">—</span>
+                        <span class="doc-balance-value" id="opening-balance"></span>
                     </div>
                     <div class="doc-balance-divider"></div>
                     <div class="doc-balance-item">
                         <span class="doc-balance-label">Closing Balance</span>
-                        <span class="doc-balance-value" id="closing-balance">—</span>
+                        <span class="doc-balance-value" id="closing-balance"></span>
                     </div>
                 </div>
 
@@ -96,19 +96,19 @@
                 <div class="doc-footer">
                     <div class="doc-footer-row">
                         <span>Total Credits</span>
-                        <span class="amount-positive" id="stat-in">—</span>
+                        <span class="amount-positive" id="stat-in"></span>
                     </div>
                     <div class="doc-footer-row">
                         <span>Total Debits</span>
-                        <span class="amount-negative" id="stat-out">—</span>
+                        <span class="amount-negative" id="stat-out"></span>
                     </div>
                     <div class="doc-footer-row doc-footer-net">
                         <span>Net Change</span>
-                        <span id="stat-net">—</span>
+                        <span id="stat-net"></span>
                     </div>
                     <div class="doc-footer-row doc-footer-total">
                         <span>Transaction Count</span>
-                        <span id="stat-count">—</span>
+                        <span id="stat-count"></span>
                     </div>
                 </div>
 
@@ -131,7 +131,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/summary.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/summary.js"></script>
 </body>
 </html>

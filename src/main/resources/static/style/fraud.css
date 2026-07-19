@@ -1,0 +1,128 @@
+.fraud-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.fraud-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #B3261E;
+}
+
+.btn-detect {
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    background: #B3261E;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-detect:hover {
+    background: #8c1a14;
+}
+
+.btn-detect:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.detect-status {
+    font-size: 13px;
+    color: #1E7A46;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+}
+
+.detect-status.none {
+    color: #3B6EA5;
+    background: #F4F6F9;
+    border-color: #C9A227;
+}
+
+/* Flag rows */
+.flag-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #C9A227;
+    background: #F4F6F9;
+    margin-bottom: 10px;
+}
+
+.flag-row.resolved {
+    opacity: 0.5;
+}
+
+.flag-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.flag-reason {
+    font-size: 13px;
+    font-weight: 600;
+    color: #14213D;
+}
+
+.flag-meta {
+    font-size: 11px;
+    color: #3B6EA5;
+}
+
+.flag-badge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 3px 8px;
+    border-radius: 99px;
+}
+
+.flag-badge.open {
+    background: #fee2e2;
+    color: #B3261E;
+    border: 1px solid #f5a3a0;
+}
+
+.flag-badge.resolved {
+    background: #f0fdf4;
+    color: #1E7A46;
+    border: 1px solid #86efac;
+}
+
+.btn-resolve {
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    background: #ffffff;
+    color: #0B2E59;
+    border: 1px solid #C9A227;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-resolve:hover {
+    background: #F4F6F9;
+}
+
+.empty-fraud {
+    text-align: center;
+    color: #3B6EA5;
+    padding: 40px;
+    font-size: 14px;
+}

@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const accountId = params.get('account');
 
-document.getElementById('back-btn').href = `/transactions.html?account=${accountId}`;
+document.getElementById('back-btn').href = `/pages/transactions.html?account=${accountId}`;
 
 function fmt(n) {
     return '$' + Number(n).toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -32,7 +32,7 @@ async function handleSubmit(e) {
     btn.textContent = 'Processing...';
     try {
         await API.accounts.deposit(accountId, amount);
-        window.location.href = `/transactions.html?account=${accountId}`;
+        window.location.href = `/pages/transactions.html?account=${accountId}`;
     } catch (e) {
         showError('Deposit failed: ' + e.message);
         btn.disabled = false;
